@@ -1,6 +1,7 @@
 import javax.swing.JFrame;
 
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
@@ -9,24 +10,28 @@ import java.awt.*;
 public class GUI extends JFrame {
 
     private JLabel title;
-    private JTextField guessInput;
+    private JTextField guessTextBox;
     private JButton enterGuess;
 
-
-
     public GUI() {
-        setLayout(new FlowLayout());
+        setLayout(new BorderLayout());
+
+        JPanel top = new JPanel(new FlowLayout());
+    
         title = new JLabel("WORDLE");
         title.setFont(new Font("Arial", Font.BOLD, 50));
-        add(title);
+        top.add(title);
 
-        guessInput = new JTextField(20);
-        add(guessInput);
+        guessTextBox = new JTextField(20);
+        top.add(guessTextBox);
 
         enterGuess = new JButton("Enter Guess");
-        add(enterGuess);
-    }
+        top.add(enterGuess);
+        add(top, BorderLayout.NORTH);
 
+        Panel board = new Panel();
+        add(board, BorderLayout.CENTER);
+    }
 
     public static void main(String[] args) {
         GUI window = new GUI();
